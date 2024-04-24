@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/blur_flash_page">
+
+    <!-- 信息部分 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <!-- 左边图片 -->
+        <ImageView
+            android:layout_width="198dp"
+            android:layout_height="107dp"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:src="@drawable/he2" />
+
+        <!-- 右边文本框容器 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- 上方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="     荷园二食堂"
+                android:maxLines="1" />
+
+            <!-- 下方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="流量状况：拥堵"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_horizontal"
+       android:text="食堂内部流量状况"
+       android:textSize="20dp">
+
+   </TextView>
+
+
+    <!-- 图片框 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="189dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/west_lake1" />
+
+    <!-- 添加间距 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="22dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="流量预测"
+        android:textSize="20dp">
+
+    </TextView>
+    <!-- 预测部分 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 第一个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="繁忙"
+                android:maxLines="1" />
+
+            <!-- 第二个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="繁忙"
+                android:maxLines="1"/>
+
+            <!-- 第三个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="拥堵"
+                android:maxLines="1"/>
+
+            <!-- 第四个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="拥堵"
+                android:maxLines="1"/>
+
+            <!-- 第五个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="拥堵"
+                android:maxLines="1"/>
+
+            <!-- 第六个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="畅通"
+                android:maxLines="1"/>
+
+            <!-- 第七个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="畅通"
+                android:maxLines="1"/>
+
+            />
+        </LinearLayout>
+
+        <!-- 第二行文本框 -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- 第一个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="当前"
+            android:textSize="16dp"
+            android:maxLines="1" />
+
+        <!-- 第二个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:hint="5min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第三个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:hint="10min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第四个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:hint="15min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第五个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:hint="20min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第六个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:hint="25min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第七个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:hint="30min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+         />
+    </LinearLayout>
+    <!-- 添加间距 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/west_lake2" />
+</LinearLayout>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="8dp">
+
+    <!-- 第一条信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <!-- 左边图片 -->
+        <ImageView
+            android:id="@+id/first_item"
+            android:layout_width="184dp"
+            android:layout_height="107dp"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:src="@drawable/he2" />
+
+        <!-- 右边文本框容器 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- 上方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="     荷园二食堂"
+                android:textSize="20sp"
+                android:maxLines="1" />
+
+            <!-- 下方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="流量状况：拥堵"
+                android:textSize="20sp"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 添加间距 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+    <!-- 第二条信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <!-- 左边图片 -->
+        <ImageView
+            android:layout_width="184dp"
+            android:layout_height="107dp"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:src="@drawable/he2" />
+
+        <!-- 右边文本框容器 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- 上方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="     荷园一食堂"
+                android:textSize="20sp"
+                android:maxLines="1"/>
+
+            <!-- 下方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="流量状况：畅通"
+                android:textSize="20sp"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 添加间距 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp"/>
+
+    <!-- 第三条信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <!-- 左边图片 -->
+        <ImageView
+            android:layout_width="184dp"
+            android:layout_height="107dp"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:src="@drawable/he2" />
+
+        <!-- 右边文本框容器 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- 上方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="     柳园一食堂"
+                android:textSize="20sp"
+                android:maxLines="1" />
+
+            <!-- 下方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="流量状况：繁忙"
+                android:textSize="20sp"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 添加间距 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp"/>
+
+    <!-- 第四条信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <!-- 左边图片 -->
+        <ImageView
+            android:layout_width="182dp"
+            android:layout_height="107dp"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:src="@drawable/he2" />
+
+        <!-- 右边文本框容器 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- 上方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="     柳园二食堂"
+                android:textSize="20sp"
+                android:maxLines="1"/>
+
+            <!-- 下方文本框 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="流量状况：繁忙"
+                android:textSize="20sp"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
