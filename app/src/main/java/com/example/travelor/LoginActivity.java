@@ -55,10 +55,10 @@ public class LoginActivity extends AppCompatActivity {
                 // 进行登录验证逻辑
                 if (isValidCredentials(account, password)) {
                     rememberMe(account, password);
-                    
                     // 登录成功，跳转到主界面或其他目标界面
                     Intent intent = new Intent(LoginActivity.this, PageJumpActivity.class);
                     startActivity(intent);
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     // 登录失败，显示错误消息

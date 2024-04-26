@@ -25,7 +25,7 @@ public class PlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private LayoutInflater mLayoutInflater;
     private Context mContext;
     private boolean isSwipeActive = false;
-    private final int SWIPE_THRESHOLD = 4;
+    private final int SWIPE_THRESHOLD = 2;
     private float startX;
     private PlansDbOpenHelper mPlansDbOpenHelper;
 

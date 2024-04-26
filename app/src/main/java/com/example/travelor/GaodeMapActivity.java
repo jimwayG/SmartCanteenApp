@@ -52,9 +52,9 @@ public class GaodeMapActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GaodeMapActivity.this, DetailsPageActivity.class);
-                intent.putExtra("attraction", attractions);
-                startActivity(intent);
+//                Intent intent = new Intent(GaodeMapActivity.this, DetailsPageActivity.class);
+//                intent.putExtra("attraction", attractions);
+//                startActivity(intent);
                 finish();
             }
         });

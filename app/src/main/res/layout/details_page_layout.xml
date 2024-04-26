@@ -95,21 +95,17 @@
             android:layout_width="match_parent"
             android:layout_height="44dp">
 
-            <View
-                android:id="@+id/location_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/locate" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/price1"
+                android:layout_width="117dp"
                 android:layout_height="wrap_content"
-                android:text="Location"
                 android:layout_gravity="center"
-                android:textColor="#626262"
-                android:textSize="20dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="15dp"
+                android:text="价格"
+                android:textStyle="bold"
+                android:textColor="#790404"
+                android:textSize="20dp" />
 
             <View
                 android:id="@+id/likeIt_icon"
@@ -136,7 +132,7 @@
             android:layout_marginLeft="5dp"
             android:textColor="@color/title_detail"
             android:textStyle="bold"
-            android:text="Photograph"/>
+            android:text="图片"/>
 
         <LinearLayout
             android:id="@+id/photos"
@@ -154,14 +150,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/west_lake2" />
+                android:background="@drawable/jcjd1" />
 
             <ImageView
                 android:id="@+id/photo3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/west_lake3" />
+                android:background="@drawable/jcjd2" />
         </LinearLayout>
 
         <TextView
@@ -171,47 +167,16 @@
             android:layout_marginLeft="5dp"
             android:textColor="@color/title_detail"
             android:textStyle="bold"
-            android:text="Introduce"/>
+            android:text="简介"/>
 
         <TextView
             android:id="@+id/introduce"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="136dp"
             android:layout_marginLeft="5dp"
-            android:textSize="16sp"
             android:text="xxxxxxxxxxxxxxxxx\nxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-            />
+            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="23dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/title_detail"
-            android:textStyle="bold"
-            android:text="Video"/>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <VideoView
-                android:id="@+id/videoView"
-                android:layout_width="match_parent"
-                android:layout_gravity="center"
-                android:layout_height="230dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <Button
-                android:id="@+id/btnToggle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/btn_toggle_style"
-                android:layout_gravity="center"
-                android:visibility="visible"/>
-        </FrameLayout>
 
 
         <TextView
@@ -222,13 +187,13 @@
             android:textColor="@color/title_detail"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
-            android:text="相似推荐"/>
+            android:text="猜你喜欢"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hotel_rl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="290dp"
+            android:layout_marginTop="10dp" />
 
         <FrameLayout
             android:layout_width="match_parent"

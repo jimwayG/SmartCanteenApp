@@ -5,29 +5,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
-import com.example.travelor.adapter.HotelAdapter;
+import com.example.travelor.adapter.DishCardAdapter;
 import com.example.travelor.adapter.ImagePagerAdapter;
-import com.example.travelor.bean.Attractions;
-import com.example.travelor.bean.Hotels;
-import com.example.travelor.bean.Plans;
-import com.example.travelor.datebase.AttrCltDbOpenHelper;
-import com.example.travelor.datebase.HotelDbOpenHelper;
-import com.example.travelor.fragment.FrontPageFragment;
+
+import com.example.travelor.bean.Dish;
+
+import com.example.travelor.datebase.DishCltDbOpenHelper;
+import com.example.travelor.datebase.DishDbOpenHelper;
+
 import com.example.travelor.util.SpfUtil;
 import com.example.travelor.util.ToastUtil;
 
@@ -36,32 +30,28 @@ import java.util.List;
 
 public class DetailsPageActivity extends AppCompatActivity {
     private ViewPager viewPager;
-    private List<Integer> imageList;
+    private List<Integer> imageList = new ArrayList<>();
     private ArrayList<View> dots = new ArrayList<>();
-    private Attractions mAttraction;
-
+    private Dish mDish;
     private TextView tvName;
-    private TextView tvRank;
+    private TextView tvPrice1;
+    private TextView tvWindow;
     private TextView tvLocation;
     private List<ImageView> imageViews = new ArrayList<>();
     private TextView tvPrice;
     private TextView tvIntroduce;
     private TextView back;
 
-    private VideoView videoView;
-    private Button btnToggle;
-    private int currentPosition = 1;
-    private boolean isPlaying = false;
 
     private Context mContext;
     private View likeItIcon;
-    private View locationIcon;
+
     public static final String KEY_COLLECTED = "collected";
 
-    private RecyclerView hotelRecycler;
-    private List<Hotels> mHotels;
-    private HotelAdapter mHotelAdapter;
-    private HotelDbOpenHelper mHotelDbOpenHelper;
+    private RecyclerView sameRecycler;
+    private List<Dish> mSame;
+    private DishCardAdapter mDishCardAdapter;
+    private DishDbOpenHelper mDishDbOpenHelper;
 
     private Button btCollect;
 
@@ -72,18 +62,20 @@ public class DetailsPageActivity extends AppCompatActivity {
         mContext = this;
 
         tvName = findViewById(R.id.name);
-        tvRank = findViewById(R.id.rank);
+        tvWindow = findViewById(R.id.rank);
         tvPrice = findViewById(R.id.price);
+        tvPrice1 = findViewById(R.id.price1);
         tvIntroduce = findViewById(R.id.introduce);
         tvLocation = findViewById(R.id.location);
         btCollect = findViewById(R.id.buy_now);
+
         imageViews.add((ImageView)findViewById(R.id.photo1));
         imageViews.add((ImageView)findViewById(R.id.photo2));
         imageViews.add((ImageView)findViewById(R.id.photo3));
 
-        hotelRecycler = findViewById(R.id.hotel_rl);
-        mHotels = new ArrayList<>();
-        mHotelDbOpenHelper = new HotelDbOpenHelper(this);
+        sameRecycler = findViewById(R.id.hotel_rl);
+        mSame = new ArrayList<>();
+        mDishDbOpenHelper = new DishDbOpenHelper(this);
 
         initData();
         initEvent();
@@ -91,9 +83,7 @@ public class DetailsPageActivity extends AppCompatActivity {
 
     private void initEvent() {
         imageSwitch();
-        videoPlayer();
         setLikeIt();
-        viewRoute();
         backEvent();
         collect();
     }
@@ -102,8 +92,8 @@ public class DetailsPageActivity extends AppCompatActivity {
         btCollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AttrCltDbOpenHelper attractionCollectDbOpenHelper = new AttrCltDbOpenHelper(mContext);
-                long row = attractionCollectDbOpenHelper.insertData(mAttraction);
+                DishCltDbOpenHelper dishCltDbOpenHelper = new DishCltDbOpenHelper(mContext);
+                long row = dishCltDbOpenHelper.insertData(mDish);
                 if (row != -1) {
                     ToastUtil.toastShort(mContext, "收藏成功！");
                 } else {
@@ -123,19 +113,7 @@ public class DetailsPageActivity extends AppCompatActivity {
         });
     }
 
-    // 查看路线
-    private void viewRoute() {
-        locationIcon = findViewById(R.id.location_icon);
-        locationIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DetailsPageActivity.this, GaodeMapActivity.class);
-                intent.putExtra("attraction", mAttraction);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
+
 
     // 设置收藏点亮
     private void setLikeIt() {
@@ -157,97 +135,53 @@ public class DetailsPageActivity extends AppCompatActivity {
         });
     }
 
-    // 风景图设置
+    // 图设置
     private void setImages(String imagesString) {
         String[] imageNames = imagesString.split("#");
 
         for (int i = 0; i < imageNames.length; i++) {
             int id = getResources().getIdentifier(imageNames[i], "drawable", getPackageName());
             imageViews.get(i).setImageResource(id);
+            imageList.add(id);
+
         }
     }
 
     // 接收数据并初始化
     private void initData() {
         Intent intent = getIntent();
-        mAttraction = (Attractions) intent.getSerializableExtra("attraction");
-        if (mAttraction != null) {
-            tvName.setText(mAttraction.getName());
-            tvRank.setText(mAttraction.getRank());
-            tvIntroduce.setText("        " + mAttraction.getIntroduce());
-            tvLocation.setText("地理位置: "+mAttraction.getLocation());
-            tvPrice.setText("￥ " + mAttraction.getPrice());
-            setImages(mAttraction.getImages());
+        mDish = (Dish) intent.getSerializableExtra("dish");
+        if (mDish != null) {
+            tvName.setText(mDish.getName());
+            tvWindow.setText(mDish.getWindow());
+            tvIntroduce.setText(mDish.getIntroduce());
+            tvLocation.setText(mDish.getLocation());
+            tvPrice.setText(mDish.getPrice());
+            tvPrice1.setText(mDish.getPrice());
+            setImages(mDish.getImages());
         }
 
-        initHotel(mAttraction.getName());
+          initSame(mDish.getCategory());
     }
 
-    // 处理酒店视图
-    private void initHotel(String mAttraction) {
-        mHotels = mHotelDbOpenHelper.queryFromDbByAttraction("杭州西湖"); // todo 动态景点名称
-        mHotelAdapter = new HotelAdapter(this, mHotels);
-        hotelRecycler.setAdapter(mHotelAdapter);
+    // 处理推荐视图
+    private void initSame(String category) {
+        mSame = mDishDbOpenHelper.queryFromDbByCategory(category); // todo 动态推荐名称
+        mDishCardAdapter = new DishCardAdapter(this, mSame);
+        sameRecycler.setAdapter(mDishCardAdapter);
 
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        hotelRecycler.setLayoutManager(linearLayoutManager); // 创建布局管理器
-        mHotelAdapter.notifyDataSetChanged();
+        sameRecycler.setLayoutManager(linearLayoutManager); // 创建布局管理器
+        mDishCardAdapter.notifyDataSetChanged();
     }
 
-    //视频播放
-    private void videoPlayer() {
-        videoView = findViewById(R.id.videoView);
-        btnToggle = findViewById(R.id.btnToggle);
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.west_lack;
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
-        videoView.requestFocus();
-        videoView.seekTo(currentPosition);
 
-        btnToggle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isPlaying) {
-                    videoView.seekTo(currentPosition); // 设置播放位置
-                    videoView.start();
-                    isPlaying = true;
-                    btnToggle.setSelected(true);
-                    btnToggle.setVisibility(View.INVISIBLE);
-                    setBtnVisible();
-                }
-                else { // 如果正在播放，则停止播放
-                    videoView.pause();
-                    currentPosition = videoView.getCurrentPosition(); // 记录当前播放位置;
-                    isPlaying = false;
-                    btnToggle.setSelected(false);
-                }
-            }
-        });
-    }
 
-    // 开始停止播放逻辑
-    private void setBtnVisible() {
-        videoView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(btnToggle.getVisibility() == View.INVISIBLE)
-                    btnToggle.setVisibility(View.VISIBLE);
-                else btnToggle.setVisibility(View.INVISIBLE);
-            }
-        });
-    };
 
-    // 图片轮回切换
     private void imageSwitch() {
         viewPager = findViewById(R.id.viewPager);
-        imageList = new ArrayList<>();  // 存储图片资源的列表
         final int[] position = {0};  // 当前显示的图片索引
-
-        // 添加图片资源到列表
-        imageList.add(R.drawable.west_lake1);
-        imageList.add(R.drawable.west_lake2);
-        imageList.add(R.drawable.west_lake3);
 
         dots.add(findViewById(R.id.p1));
         dots.add(findViewById(R.id.p2));

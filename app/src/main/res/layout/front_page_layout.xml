@@ -25,7 +25,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:tint="#4EB284"
-            android:queryHint="景点名称"
+            android:queryHint="菜品名称"
             android:background="@drawable/search_frame"/>
 
 <!--        <Button-->
@@ -96,7 +96,7 @@
                 android:text="汉堡薯条"/>
 
             <TextView
-                android:id="@+id/mfmg"
+                android:id="@+id/show_mfmg"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"

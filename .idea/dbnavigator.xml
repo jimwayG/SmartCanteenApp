@@ -16,7 +16,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="7548b8a1-9543-4ac0-a094-c9c9247e3ba5">
+    <connection id="abf86415-b884-4ce0-8a80-cfa52d381bdb">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -27,10 +27,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="7548b8a1-9543-4ac0-a094-c9c9247e3ba5" />
+    <connection id="abf86415-b884-4ce0-8a80-cfa52d381bdb" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="7548b8a1-9543-4ac0-a094-c9c9247e3ba5" dataset="main.users" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="abf86415-b884-4ce0-8a80-cfa52d381bdb" dataset="main.attractions_collect" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -49,7 +49,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="7548b8a1-9543-4ac0-a094-c9c9247e3ba5" active="true" signed="true">
+      <connection id="abf86415-b884-4ce0-8a80-cfa52d381bdb" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -66,7 +66,7 @@
           <tns-folder value="" />
           <tns-profile value="" />
           <files>
-            <file path="C:\Users\孑然\AppData\Local\Google\AndroidStudio2023.1\device-explorer\Pixel 3a API 34\_\data\data\com.example.travelor\databases\usersSQLite.db" schema="main" />
+            <file path="C:\Users\孑然\AppData\Local\Google\AndroidStudio2023.1\device-explorer\Pixel 3a API 34\_\data\data\com.example.travelor\databases\attractionCollectSQLite.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />

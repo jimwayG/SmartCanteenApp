@@ -31,6 +31,7 @@ public class FrontPageFragment extends Fragment{
     private TextView showHumanity;
     private TextView showNature;
 
+
     private AttractionDbOpenHelper mAttractionDbOpenHelper;
 
     @Override
@@ -144,6 +145,7 @@ public class FrontPageFragment extends Fragment{
     private void initData() {
         mAttractions = new ArrayList<>();
         mAttractionDbOpenHelper = new AttractionDbOpenHelper(requireContext());
+
     }
 
     private void initView(View rootView) {

@@ -1,193 +1,401 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp"
-    android:layout_margin="8dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <!-- 第一条信息 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical">
 
-        <!-- 左边图片 -->
-        <ImageView
-            android:id="@+id/first_item"
-            android:layout_width="184dp"
-            android:layout_height="107dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            android:src="@drawable/he2" />
-
-        <!-- 右边文本框容器 -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_width="match_parent"
+            android:layout_height="109dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/low_shadow">
 
-            <!-- 上方文本框 -->
-            <TextView
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#7F7F7F"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="1"
+                    android:text="12-22"
+                    android:textColor="#000000"
+                    android:textSize="50dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="   郑州大学食堂"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="152dp"
+                android:layout_height="87dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/circular_image2" />
+
+        </LinearLayout>
+
+        <!-- 第1条信息 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/low_right_shadow">
+
+            <LinearLayout
+                android:id="@+id/he2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="     荷园二食堂"
-                android:textSize="20sp"
-                android:maxLines="1" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
-            <!-- 下方文本框 -->
-            <TextView
+                <TextView
+
+                    android:layout_width="32dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/btn_send"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="101dp"
+                    android:layout_height="109dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="荷园二餐厅"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12sp"
+                        android:text="流量状况：拥挤" />
+
+                    <View
+                        android:id="@+id/location"
+                        android:layout_width="35dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="30sp"
+                        android:background="@drawable/locate" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25sp"
+                        android:text="Location"
+                        android:textColor="#626262"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="242dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:layout_width="186dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+
+                        android:background="@drawable/he2" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 第1条信息 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/low_right_shadow">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="流量状况：拥堵"
-                android:textSize="20sp"
-                android:maxLines="1"/>
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+
+                    android:layout_width="32dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/btn_send"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="101dp"
+                    android:layout_height="109dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="荷园一餐厅"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12sp"
+                        android:text="流量状况：拥挤" />
+
+                    <View
+
+                        android:layout_width="35dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="30sp"
+                        android:background="@drawable/locate" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25sp"
+                        android:text="Location"
+                        android:textColor="#626262"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="242dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:layout_width="186dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/he1" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 第1条信息 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/low_right_shadow">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+
+                    android:layout_width="32dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/btn_send"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="101dp"
+                    android:layout_height="109dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="聚英园餐厅"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12sp"
+                        android:text="流量状况：拥挤" />
+
+                    <View
+
+                        android:layout_width="35dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="30sp"
+                        android:background="@drawable/locate" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25sp"
+                        android:text="Location"
+                        android:textColor="#626262"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="242dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:layout_width="183dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/jyj" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 第1条信息 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/low_right_shadow">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+
+                    android:layout_width="32dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/btn_send"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="101dp"
+                    android:layout_height="109dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="风华园餐厅"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12sp"
+                        android:text="流量状况：拥挤" />
+
+                    <View
+
+                        android:layout_width="35dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="30sp"
+                        android:background="@drawable/locate" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25sp"
+                        android:text="Location"
+                        android:textColor="#626262"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="242dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:layout_width="182dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/fhy" />
+
+
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
 
-    <!-- 添加间距 -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp" />
-
-    <!-- 第二条信息 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
-
-        <!-- 左边图片 -->
-        <ImageView
-            android:layout_width="184dp"
-            android:layout_height="107dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            android:src="@drawable/he2" />
-
-        <!-- 右边文本框容器 -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <!-- 上方文本框 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="     荷园一食堂"
-                android:textSize="20sp"
-                android:maxLines="1"/>
-
-            <!-- 下方文本框 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="流量状况：畅通"
-                android:textSize="20sp"
-                android:maxLines="1"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 添加间距 -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp"/>
-
-    <!-- 第三条信息 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
-
-        <!-- 左边图片 -->
-        <ImageView
-            android:layout_width="184dp"
-            android:layout_height="107dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            android:src="@drawable/he2" />
-
-        <!-- 右边文本框容器 -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <!-- 上方文本框 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="     柳园一食堂"
-                android:textSize="20sp"
-                android:maxLines="1" />
-
-            <!-- 下方文本框 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="流量状况：繁忙"
-                android:textSize="20sp"
-                android:maxLines="1"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 添加间距 -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp"/>
-
-    <!-- 第四条信息 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
-
-        <!-- 左边图片 -->
-        <ImageView
-            android:layout_width="182dp"
-            android:layout_height="107dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            android:src="@drawable/he2" />
-
-        <!-- 右边文本框容器 -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <!-- 上方文本框 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="     柳园二食堂"
-                android:textSize="20sp"
-                android:maxLines="1"/>
-
-            <!-- 下方文本框 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="流量状况：繁忙"
-                android:textSize="20sp"
-                android:maxLines="1"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>

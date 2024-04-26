@@ -33,7 +33,7 @@ public class AttractionCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.mAttractionList = mAttractionList;
         this.mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
-        mAttractionDbOpenHelper = new AttractionDbOpenHelper(mContext);
+        //mAttractionDbOpenHelper = new AttractionDbOpenHelper(mContext);
     }
 
     @NonNull

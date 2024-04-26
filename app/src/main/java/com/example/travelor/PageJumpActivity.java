@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.travelor.fragment.FrontPageFragment;
+import com.example.travelor.fragment.FrontPageFragment1;
 
 import com.example.travelor.fragment.MineFragment;
 import com.example.travelor.fragment.PlanFragment;
-import com.example.travelor.fragment.SparkAiFragment;
+import com.example.travelor.fragment.MonitoringFragment;
 
 public class PageJumpActivity extends AppCompatActivity {
     @Override
@@ -22,7 +21,7 @@ public class PageJumpActivity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        FrontPageFragment fgm_front_page = new FrontPageFragment();
+        FrontPageFragment1 fgm_front_page = new FrontPageFragment1();
         ft.replace(R.id.main_fragment, fgm_front_page);
         ft.commit();
     }
@@ -31,10 +30,11 @@ public class PageJumpActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        FrontPageFragment fgm_front_page = new FrontPageFragment();
+        FrontPageFragment1 fgm_front_page = new FrontPageFragment1();
         PlanFragment fgm_plan_page = new PlanFragment();
         MineFragment fgm_mine_page = new MineFragment();
-        SparkAiFragment fgm_spark_page = new SparkAiFragment();
+        MonitoringFragment fgm_spark_page = new MonitoringFragment();
+
 
         switch (view.getId()){
             case R.id.front_page:

@@ -24,7 +24,7 @@ public class AttractionDbOpenHelper extends SQLiteOpenHelper {
 
     public AttractionDbOpenHelper(Context context) {
         super(context, DB_NAME, null, 7);
-        initDb();
+        //initDb();
     }
 
     @Override

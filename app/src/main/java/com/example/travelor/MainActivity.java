@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void tomainActivity(){
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, PageJumpActivity.class));
         finish();
     }
 
