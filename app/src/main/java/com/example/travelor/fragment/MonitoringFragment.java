@@ -47,8 +47,8 @@ public class MonitoringFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                // 跳转到目标Activity
                 Intent intent = new Intent(getActivity(), GaodeMapActivity.class);
+                intent.putExtra("canteenName", "荷园二餐厅"); // TODO 硬编码，需要修改
                 startActivity(intent);
             }
         });
