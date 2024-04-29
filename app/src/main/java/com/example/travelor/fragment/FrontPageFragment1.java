@@ -153,6 +153,7 @@ public class FrontPageFragment1 extends Fragment{
     private void initData() {
         mDishes = new ArrayList<>();
         mDishDbOpenHelper = new DishDbOpenHelper(requireContext());
+
     }
 
     private void initView(View rootView) {

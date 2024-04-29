@@ -29,10 +29,10 @@ public class DishDbOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_SQL);
-//        initDb();
+        initDb(db);
     }
 
-    private void initDb() {
+    private void initDb(SQLiteDatabase db) {
         String[] names = {"韭菜鸡蛋水饺", "汉堡+薯条可乐", "麻婆豆腐", "麻辣小面",
                 "芹菜猪肉水饺", "猪肉大葱煎饺", "铁板炒饺子", "云吞面", "虾仁水饺",
                 "安格斯牛肉堡", "奥尔良烤肉堡套餐", "至臻全虾堡", "正新汉堡+鸡腿", "藤椒鸡腿中国汉堡",
@@ -170,17 +170,17 @@ public class DishDbOpenHelper extends SQLiteOpenHelper {
                 "米粉面馆","米粉面馆","米粉面馆","米粉面馆","米粉面馆"};
 
         for(int i = 0; i < names.length; i++) {
-            Dish oneAttraction = new Dish();
-            oneAttraction.setName(names[i]);
-            oneAttraction.setIntroduce(introduces[i]);
-            oneAttraction.setLocation(locations[i]);
-            oneAttraction.setImages(images[i]);
-            oneAttraction.setWindow(window[i]);
-            oneAttraction.setSame(same[i]);
-            oneAttraction.setPrice(prices[i]);
-            oneAttraction.setCategory(category[i]);
+            Dish oneDish = new Dish();
+            oneDish.setName(names[i]);
+            oneDish.setIntroduce(introduces[i]);
+            oneDish.setLocation(locations[i]);
+            oneDish.setImages(images[i]);
+            oneDish.setWindow(window[i]);
+            oneDish.setSame(same[i]);
+            oneDish.setPrice(prices[i]);
+            oneDish.setCategory(category[i]);
 
-            insertData(oneAttraction);
+            insertData(db,oneDish);
         }
     }
     @Override
@@ -191,9 +191,7 @@ public class DishDbOpenHelper extends SQLiteOpenHelper {
         }
     }
 
-    public long insertData(Dish dish) {
-        SQLiteDatabase db = getWritableDatabase();
-
+    public long insertData(SQLiteDatabase db, Dish dish) {
         ContentValues values = new ContentValues();
         values.put("name", dish.getName());
         values.put("window", dish.getWindow());
