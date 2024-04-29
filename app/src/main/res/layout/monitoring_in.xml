@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="8dp">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/collect_card">
+
+            <TextView
+                android:id="@+id/turn_back"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/back"/>
+
+
+            <LinearLayout
+                android:layout_width="96dp"
+                android:layout_height="109dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/main_cantten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="荷园二餐厅"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/flow_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:text="流量状况:拥挤" />
+
+                <View
+                    android:id="@+id/location_icon"
+                    android:layout_width="35dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="30sp"
+                    android:background="@drawable/locate" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25sp"
+                    android:text="Location"
+                    android:textColor="#626262"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/handle_buttons"
+                android:layout_width="242dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="195dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/he2" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+       android:text="食堂内部流量状况"
+       android:textSize="20dp"
+        android:background="@drawable/collect_card">
+
+   </TextView>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="190dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+            <View
+                android:id="@+id/p1"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/dot_focus"/>
+            <View
+                android:id="@+id/p2"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/dot_normal"/>
+            <View
+                android:id="@+id/p3"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/dot_normal"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- 添加间距 -->
+
+    <!-- 预测部分 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collect_card"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="流量预测"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/circle_background">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            tools:ignore="ExtraText">
+
+            <!-- 第一个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="繁忙"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <!-- 第二个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="繁忙"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <!-- 第三个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="拥堵"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <!-- 第四个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="拥堵"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <!-- 第五个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="拥堵"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <!-- 第六个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="畅通"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <!-- 第七个文本框 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="畅通"
+                android:maxLines="1"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            />
+        </LinearLayout>
+
+        <!-- 第二行文本框 -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/circle_background"
+        android:orientation="horizontal">
+
+        <!-- 第一个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="当前"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第二个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="5min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第三个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="10min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第四个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="15min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第五个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="20min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第六个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="25min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        <!-- 第七个文本框 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="30min"
+            android:maxLines="1"
+            android:textSize="16dp" />
+
+        />
+    </LinearLayout>
+
+    <!-- 添加间距 -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/collect_card"
+        android:gravity="center_horizontal"
+        android:text="食堂公告"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:text="      荷园二食堂将于五月一日休息，届时将暂停营业，请各位同学提前安排好就餐时间。"
+        android:textSize="16dp"
+        android:background="@drawable/edittext_border_toggle"/>
+</LinearLayout>
