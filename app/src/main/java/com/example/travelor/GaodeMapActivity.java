@@ -1,123 +1,140 @@
 package com.example.travelor;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Gravity;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.CameraUpdateFactory;
+import com.amap.api.maps2d.AMapOptions;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.MapsInitializer;
+import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
-import com.amap.api.maps2d.model.MarkerOptions;
-import com.amap.api.services.core.ServiceSettings;
-import com.example.travelor.bean.Attractions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
-public class GaodeMapActivity extends AppCompatActivity {
+public class GaodeMapActivity extends Activity {
+    private LinearLayout containerLayout;
 
-    private MapView mMapView;
-    private AMapLocationClient mLocationClient;
-    private Button back;
-    private Attractions attractions;
+    private MapView mapView;
+    private AMap map;
+
+    private Button button;
+
+    private static Map<String, LatLng> CANTEEN_LOCATION_MAP;
+    static
+    {
+        CANTEEN_LOCATION_MAP = new HashMap<>();
+        CANTEEN_LOCATION_MAP.put("荷园二餐厅", new LatLng(34.815124, 113.530656));
+    }
+
+    public  static  final  String CITI_KEY="city";
+    public  static  final int SHANGHAI=0;
+    public  static  final int BEIJING=1;
+    public  static  final int GUANGZHOU=2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gaode_map_layout);//设置对应的XML布局文件
+        setContentView(R.layout.gaode_map_layout);
+        initContainerLayout();
+        initAndAddButton();
+        initAndAddMapComponents(savedInstanceState);
+    }
 
-        initData();
-
-        //定位隐私政策同意
-        AMapLocationClient.updatePrivacyShow(this,true,true);
-        AMapLocationClient.updatePrivacyAgree(this,true);
-
-        mMapView = (MapView) findViewById(R.id.mapView);
-        mMapView.onCreate(savedInstanceState);// 此方法必须重写
-        AMap aMap = mMapView.getMap();
-        aMap.setTrafficEnabled(true);// 显示实时交通状况
-        //地图模式可选类型：MAP_TYPE_NORMAL,MAP_TYPE_SATELLITE,MAP_TYPE_NIGHT
-        aMap.setMapType(AMap.MAP_TYPE_SATELLITE);// 卫星地图模式
-
-        // 返回
-        back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(GaodeMapActivity.this, DetailsPageActivity.class);
-//                intent.putExtra("attraction", attractions);
-//                startActivity(intent);
-                finish();
-            }
+    private void initAndAddButton() {
+        button = new Button(this);
+        button.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        button.setBackgroundColor(Color.parseColor("#A06565")); // Setting background color programmatically
+        button.setGravity(Gravity.CENTER); // Centering the text
+        button.setText("返回");
+        button.setTextSize(30); // Setting text size in dp
+        button.setTextColor(Color.WHITE);
+        button.setOnClickListener(button -> {
+            finish(); // Finish the activity
         });
-
-        // 初始化定位客户端
-//        try {
-//            mLocationClient = new AMapLocationClient(getApplicationContext());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        AMapLocationClientOption option = new AMapLocationClientOption();
-//        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-//        mLocationClient.setLocationOption(option);
-//        mLocationClient.setLocationListener(new AMapLocationListener() {
-//            @Override
-//            public void onLocationChanged(AMapLocation aMapLocation) {
-//                // 处理定位结果
-//                if (aMapLocation != null) {
-//                    double latitude = aMapLocation.getLatitude();
-//                    double longitude = aMapLocation.getLongitude();
-//                    // 在地图上显示当前位置
-//                    LatLng latLng = new LatLng(latitude, longitude);
-//                    MarkerOptions markerOptions = new MarkerOptions().position(latLng);
-//                    AMap map = mMapView.getMap();
-//                    map.addMarker(markerOptions);
-//                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
-//                }
-//            }
-//        });
-//
-//        mLocationClient.startLocation();
+        containerLayout.addView(button);
     }
 
-    private void initData() {
-        Intent intent = getIntent();
-        attractions = (Attractions) intent.getSerializableExtra("attraction");
+    private void initAndAddMapComponents(Bundle savedInstanceState) {
+        AMapOptions mapOptions = generateMapOptions(savedInstanceState);
+        initMapView(savedInstanceState, mapOptions);
+        addMapView2Container();
+        initMapFromMapView();
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
-        mMapView.onDestroy();
+    private void initContainerLayout() {
+        containerLayout = (LinearLayout) findViewById(R.id.gaode_map_layout);
     }
 
+    private void addMapView2Container() {
+        containerLayout.addView(mapView,
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT));
+    }
+
+    private void initMapView(Bundle savedInstanceState, AMapOptions aOptions) {
+        mapView = new MapView(this, aOptions);
+        mapView.onCreate(savedInstanceState);
+    }
+
+    @NonNull
+    private AMapOptions generateMapOptions(Bundle savedInstanceState) {
+        AMapOptions aOptions = new AMapOptions();
+        aOptions.camera(new CameraPosition(CANTEEN_LOCATION_MAP.get(getIntent().getStringExtra("canteenName")), 19f, 0, 0));
+        return aOptions;
+    }
+
+    private void initMapFromMapView() {
+        if (map == null) {
+            map = mapView.getMap();
+        }
+    }
+    /**
+     * 方法必须重写
+     */
     @Override
     protected void onResume() {
         super.onResume();
-        //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
-        mMapView.onResume();
+        mapView.onResume();
     }
+
+    /**
+     * 方法必须重写
+     */
     @Override
     protected void onPause() {
         super.onPause();
-        //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
-        mMapView.onPause();
+        mapView.onPause();
     }
 
+    /**
+     * 方法必须重写
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
-        mMapView.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
     }
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
 }
