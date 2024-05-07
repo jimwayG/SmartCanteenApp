@@ -11,7 +11,7 @@ import com.example.travelor.fragment.FrontPageFragment1;
 
 import com.example.travelor.fragment.MineFragment;
 import com.example.travelor.fragment.PlanFragment;
-import com.example.travelor.fragment.MonitoringFragment;
+import com.example.travelor.fragment.CanteenListFragment;
 
 public class PageJumpActivity extends AppCompatActivity {
     @Override
@@ -33,7 +33,7 @@ public class PageJumpActivity extends AppCompatActivity {
         FrontPageFragment1 fgm_front_page = new FrontPageFragment1();
         PlanFragment fgm_plan_page = new PlanFragment();
         MineFragment fgm_mine_page = new MineFragment();
-        MonitoringFragment fgm_spark_page = new MonitoringFragment();
+        CanteenListFragment canteenListFragment = new CanteenListFragment();
 
 
         switch (view.getId()){
@@ -47,7 +47,7 @@ public class PageJumpActivity extends AppCompatActivity {
                 ft.replace(R.id.main_fragment, fgm_mine_page);
                 break;
             case R.id.spark:
-                ft.replace(R.id.main_fragment, fgm_spark_page);
+                ft.replace(R.id.main_fragment, canteenListFragment);
                 break;
         }
         ft.commit();
