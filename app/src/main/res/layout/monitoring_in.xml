@@ -35,7 +35,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/main_cantten"
+                    android:id="@+id/canteen_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="荷园二餐厅"
@@ -328,6 +328,7 @@
         android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/announcement"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
