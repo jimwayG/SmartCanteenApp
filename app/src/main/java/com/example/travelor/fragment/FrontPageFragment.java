@@ -12,27 +12,26 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.travelor.R;
-import com.example.travelor.adapter.AttractionCardAdapter;
-import com.example.travelor.bean.Attractions;
+import com.example.travelor.adapter.DishCardAdapter;
+import com.example.travelor.bean.Dish;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.travelor.datebase.AttractionDbOpenHelper;
+import com.example.travelor.datebase.DishDbOpenHelper;
 
 public class FrontPageFragment extends Fragment{
 
     private RecyclerView mRecyclerView;
-    private List<Attractions> mAttractions;
-    private AttractionCardAdapter mAttrAdapter;
+    private List<Dish> mDishes;
+    private DishCardAdapter mDishAdapter;
     private SearchView searchView;
-    private TextView showAttraction;
+    private TextView showDish;
     private TextView showAll;
     private TextView showHumanity;
     private TextView showNature;
-
-
-    private AttractionDbOpenHelper mAttractionDbOpenHelper;
+    private TextView showMfmg;
+    private DishDbOpenHelper mDishDbOpenHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,10 +43,11 @@ public class FrontPageFragment extends Fragment{
 
         // 搜索框
         searchView = rootView.findViewById(R.id.searchView);
-        showAttraction = rootView.findViewById(R.id.show_attraction);
+        showDish = rootView.findViewById(R.id.show_attraction);
         showAll = rootView.findViewById(R.id.show_all);
         showNature = rootView.findViewById(R.id.show_nature);
         showHumanity = rootView.findViewById(R.id.show_humanity);
+        showMfmg = rootView.findViewById(R.id.show_mfmg);
 
         search();
         categoryAct();
@@ -60,17 +60,17 @@ public class FrontPageFragment extends Fragment{
         showAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAttractions = mAttractionDbOpenHelper.queryAllFromDb();
-                mAttrAdapter.refreshData(mAttractions);
+                mDishes = mDishDbOpenHelper.queryAllFromDb();
+                mDishAdapter.refreshData(mDishes);
                 setLayout();
             }
         });
 
-        showAttraction.setOnClickListener(new View.OnClickListener() {
+        showDish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAttractions = mAttractionDbOpenHelper.queryFromDbByCategory("风景");
-                mAttrAdapter.refreshData(mAttractions);
+                mDishes = mDishDbOpenHelper.queryFromDbByCategory("饺子馄饨");
+                mDishAdapter.refreshData(mDishes);
                 setLayout();
             }
         });
@@ -78,8 +78,8 @@ public class FrontPageFragment extends Fragment{
         showNature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAttractions = mAttractionDbOpenHelper.queryFromDbByCategory("自然");
-                mAttrAdapter.refreshData(mAttractions);
+                mDishes = mDishDbOpenHelper.queryFromDbByCategory("汉堡薯条");
+                mDishAdapter.refreshData(mDishes);
                 setLayout();
             }
         });
@@ -87,14 +87,22 @@ public class FrontPageFragment extends Fragment{
         showHumanity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAttractions = mAttractionDbOpenHelper.queryFromDbByCategory("人文");
-                mAttrAdapter.refreshData(mAttractions);
+                mDishes = mDishDbOpenHelper.queryFromDbByCategory("快餐便当");
+                mDishAdapter.refreshData(mDishes);
                 setLayout();
             }
         });
+        showMfmg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDishes = mDishDbOpenHelper.queryFromDbByCategory("米粉面馆");
+                mDishAdapter.refreshData(mDishes);
+                setLayout();
+            }
+        } );
     }
 
-    // 景点名搜索
+    // 菜肴名搜索
     private void search() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -109,8 +117,8 @@ public class FrontPageFragment extends Fragment{
     }
 
     private void performSearch(String query) {
-        mAttractions = mAttractionDbOpenHelper.queryFromDbByName(query);
-        mAttrAdapter.refreshData(mAttractions);
+        mDishes = mDishDbOpenHelper.queryFromDbByName(query);
+        mDishAdapter.refreshData(mDishes);
         setLayout();
     }
 
@@ -125,26 +133,26 @@ public class FrontPageFragment extends Fragment{
     private void setLayout() {
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager); // 创建布局管理器
-        mAttrAdapter.notifyDataSetChanged();
+        mDishAdapter.notifyDataSetChanged();
     }
 
     private void refreshDataFromDb() {
-        mAttractions = getDataFromDB();
-        mAttrAdapter.refreshData(mAttractions);
+        mDishes = getDataFromDB();
+        mDishAdapter.refreshData(mDishes);
     }
 
-    private List<Attractions> getDataFromDB() {
-        return mAttractionDbOpenHelper.queryAllFromDb();
+    private List<Dish> getDataFromDB() {
+        return mDishDbOpenHelper.queryAllFromDb();
     }
 
     private void initEvent() {
-        mAttrAdapter = new AttractionCardAdapter(requireContext(), mAttractions);
-        mRecyclerView.setAdapter(mAttrAdapter);
+        mDishAdapter = new DishCardAdapter(requireContext(), mDishes);
+        mRecyclerView.setAdapter(mDishAdapter);
     }
 
     private void initData() {
-        mAttractions = new ArrayList<>();
-        mAttractionDbOpenHelper = new AttractionDbOpenHelper(requireContext());
+        mDishes = new ArrayList<>();
+        mDishDbOpenHelper = new DishDbOpenHelper(requireContext());
 
     }
 
@@ -153,3 +161,5 @@ public class FrontPageFragment extends Fragment{
     }
 
 }
+
+

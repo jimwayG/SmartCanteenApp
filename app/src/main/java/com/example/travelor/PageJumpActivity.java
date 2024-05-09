@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.travelor.fragment.FrontPageFragment1;
+import com.example.travelor.fragment.FrontPageFragment;
 
 import com.example.travelor.fragment.MineFragment;
 import com.example.travelor.fragment.PlanFragment;
@@ -21,7 +21,7 @@ public class PageJumpActivity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        FrontPageFragment1 fgm_front_page = new FrontPageFragment1();
+        FrontPageFragment fgm_front_page = new FrontPageFragment();
         ft.replace(R.id.main_fragment, fgm_front_page);
         ft.commit();
     }
@@ -30,7 +30,7 @@ public class PageJumpActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        FrontPageFragment1 fgm_front_page = new FrontPageFragment1();
+        FrontPageFragment fgm_front_page = new FrontPageFragment();
         PlanFragment fgm_plan_page = new PlanFragment();
         MineFragment fgm_mine_page = new MineFragment();
         CanteenListFragment canteenListFragment = new CanteenListFragment();
