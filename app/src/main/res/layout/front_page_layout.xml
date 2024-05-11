@@ -20,12 +20,13 @@
 
         <SearchView
             android:id="@+id/searchView"
+            android:iconifiedByDefault="false"
             android:layout_width="330dp"
             android:layout_height="42dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:tint="#4EB284"
-            android:queryHint="菜品名称"
+            android:queryHint="搜索菜品"
             android:background="@drawable/search_frame"/>
 
 <!--        <Button-->
