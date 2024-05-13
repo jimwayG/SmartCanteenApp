@@ -2,10 +2,13 @@ package com.example.travelor;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.travelor.adapter.ImagePagerAdapter;
 import com.example.travelor.bean.CanteenItem;
@@ -29,6 +32,10 @@ public class MonitoringActivity extends AppCompatActivity {
     private List<Integer> imageList;
     private ArrayList<View> dots = new ArrayList<>();
 
+    private VideoView videoView;
+    private Button btnToggle;
+    private int currentPosition = 1;
+    private boolean isPlaying = false;
     private TextView backButton;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,8 @@ public class MonitoringActivity extends AppCompatActivity {
         initFlowState();
         initAnnouncement();
         initLocationIcon();
+        initVideoPlayer();
+
     }
 
     private void initLocationIcon() {
@@ -118,4 +127,50 @@ public class MonitoringActivity extends AppCompatActivity {
         // 启动自动切换
         handler.postDelayed(runnable, 1500);  // 设置初始延时时间（单位：毫秒）
     }
+
+    //视频播放
+    private void initVideoPlayer(){
+        videoView = findViewById(R.id.videoView);
+        btnToggle = findViewById(R.id.btnToggle);
+
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.in1;
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        videoView.requestFocus();
+        videoView.seekTo(currentPosition);
+
+        btnToggle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(!isPlaying) {
+                    videoView.seekTo(currentPosition); // 设置播放位置
+                    videoView.start();
+                    isPlaying = true;
+                    btnToggle.setSelected(true);
+                    btnToggle.setVisibility(View.INVISIBLE);
+                    setBtnVisible();
+                }
+                else { // 如果正在播放，则停止播放
+                    videoView.pause();
+                    currentPosition = videoView.getCurrentPosition(); // 记录当前播放位置;
+                    isPlaying = false;
+                    btnToggle.setSelected(false);
+                }
+            }
+        });
+    }
+
+
+    // 开始停止播放逻辑
+    private void setBtnVisible() {
+        videoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btnToggle.getVisibility() == View.INVISIBLE)
+                    btnToggle.setVisibility(View.VISIBLE);
+                else btnToggle.setVisibility(View.INVISIBLE);
+            }
+        });
+    };
 }
+

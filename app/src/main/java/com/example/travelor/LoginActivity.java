@@ -1,6 +1,7 @@
 package com.example.travelor;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 // 进行登录验证逻辑
                 if (isValidCredentials(account, password)) {
                     rememberMe(account, password);
+
                     // 登录成功，跳转到主界面或其他目标界面
                     Intent intent = new Intent(LoginActivity.this, PageJumpActivity.class);
                     startActivity(intent);
@@ -75,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     private void rememberMe(String account, String password) {
@@ -98,4 +102,6 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         return true;
     }
+
+
 }

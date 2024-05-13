@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -139,8 +146,37 @@
         </LinearLayout>
     </FrameLayout>
 
-    <!-- 添加间距 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="监控视频"
+        android:textSize="20dp"
+        android:background="@drawable/collect_card">
 
+    </TextView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="230dp"
+            />
+
+        <Button
+            android:id="@+id/btnToggle"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/btn_toggle_style"
+            android:layout_gravity="center"
+            android:visibility="visible"/>
+    </FrameLayout>
     <!-- 预测部分 -->
     <TextView
         android:layout_width="match_parent"
@@ -332,7 +368,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_border_toggle"
         android:text="      荷园二食堂将于五月一日休息，届时将暂停营业，请各位同学提前安排好就餐时间。"
-        android:textSize="16dp"
-        android:background="@drawable/edittext_border_toggle"/>
+        android:textSize="16dp" />
 </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
