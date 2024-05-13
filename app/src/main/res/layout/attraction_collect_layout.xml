@@ -16,12 +16,30 @@
             android:background="@color/main_style_green"
             android:layout_weight="1"/>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="#F1F1F1"
             android:layout_weight="4"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 你更喜欢麻辣鲜香的口味！"
+        android:background="@drawable/collect_card"
+        android:layout_marginLeft="40sp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,13 +77,15 @@
 
     </LinearLayout>
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collect_rlv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="85dp"/>
+        android:layout_marginTop="150dp"/>
 
     <LinearLayout
         android:id="@+id/ll_delete"
