@@ -27,11 +27,11 @@ public class MonitoringActivity extends AppCompatActivity {
     private TextView canteenName;
     private TextView flowState;
     private TextView announcement;
+    private TextView currentState;
     private ViewPager viewPager;
     private View locationIcon;
     private List<Integer> imageList;
     private ArrayList<View> dots = new ArrayList<>();
-
     private VideoView videoView;
     private Button btnToggle;
     private int currentPosition = 1;
@@ -46,10 +46,17 @@ public class MonitoringActivity extends AppCompatActivity {
         initSwichImage();
         initBackButton();
         initFlowState();
+        initCurrentState();
         initAnnouncement();
         initLocationIcon();
         initVideoPlayer();
 
+    }
+
+
+    private void initCurrentState() {
+        currentState = findViewById(R.id.current_state);
+        currentState.setText(canteenItem.getFlowState());
     }
 
     private void initLocationIcon() {
@@ -173,4 +180,3 @@ public class MonitoringActivity extends AppCompatActivity {
         });
     };
 }
-
