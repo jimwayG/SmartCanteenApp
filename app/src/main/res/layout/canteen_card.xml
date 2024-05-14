@@ -77,7 +77,8 @@
                     android:id="@+id/cantten_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/he2" />
+                    android:background="@drawable/he2"
+                    android:scaleType="fitXY"/>
 
 
             </LinearLayout>

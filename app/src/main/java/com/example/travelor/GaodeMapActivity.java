@@ -14,7 +14,7 @@ import com.amap.api.maps2d.AMapOptions;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
-import com.example.travelor.bean.CanteenItem;
+import com.example.travelor.bean.Canteen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class GaodeMapActivity extends Activity {
     private Button backButton;
     private MapView mapView;
     private AMap map;
-    private CanteenItem canteenItem;
+    private Canteen canteen;
     private static Map<String, LatLng> CANTEEN_LOCATION_MAP;
     static
     {
@@ -48,7 +48,7 @@ public class GaodeMapActivity extends Activity {
     }
 
     private void initCanteenItem() {
-        canteenItem = (CanteenItem) getIntent().getSerializableExtra("canteenItem");
+        canteen = (Canteen) getIntent().getSerializableExtra("canteenItem");
     }
 
     private void addBackButton() {
@@ -93,7 +93,7 @@ public class GaodeMapActivity extends Activity {
     @NonNull
     private AMapOptions generateMapOptions() {
         AMapOptions aOptions = new AMapOptions();
-        aOptions.camera(new CameraPosition(CANTEEN_LOCATION_MAP.get(canteenItem.getCanteenName()), 19f, 0, 0));
+        aOptions.camera(new CameraPosition(CANTEEN_LOCATION_MAP.get(canteen.getName()), 19f, 0, 0));
         return aOptions;
     }
 

@@ -5,12 +5,20 @@ import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
 
-public class CanteenItem implements Serializable {
+public class Canteen implements Serializable {
 
-    private String canteenName;
+    private String name;
     private String flowState;
     private String announcement;
+    private String imageUrl;
     private transient Drawable canteenImage;
+
+    public Canteen(String name, String flowState, String announcement, String imageUrl) {
+        this.name = name;
+        this.flowState = flowState;
+        this.announcement = announcement;
+        this.imageUrl = imageUrl;
+    }
 
     public String getAnnouncement() {
         return announcement;
@@ -20,25 +28,33 @@ public class CanteenItem implements Serializable {
         this.announcement = announcement;
     }
 
-    public CanteenItem(String canteenName, String flowState, Drawable canteenImage) {
-        this.canteenName = canteenName;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Canteen(String name, String flowState, Drawable canteenImage) {
+        this.name = name;
         this.flowState = flowState;
         this.canteenImage = canteenImage;
     }
 
-    public CanteenItem(String canteenName, String flowState, Drawable canteenImage, String announcement) {
-        this.canteenName = canteenName;
+    public Canteen(String name, String flowState, Drawable canteenImage, String announcement) {
+        this.name = name;
         this.flowState = flowState;
         this.canteenImage = canteenImage;
         this.announcement = announcement;
     }
 
-    public String getCanteenName() {
-        return canteenName;
+    public String getName() {
+        return name;
     }
 
-    public void setCanteenName(String canteenName) {
-        this.canteenName = canteenName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFlowState() {

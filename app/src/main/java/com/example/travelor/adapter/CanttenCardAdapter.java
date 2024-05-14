@@ -3,6 +3,7 @@ package com.example.travelor.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +15,18 @@ import androidx.annotation.NonNull;
 import com.example.travelor.GaodeMapActivity;
 import com.example.travelor.MonitoringActivity;
 import com.example.travelor.R;
-import com.example.travelor.bean.CanteenItem;
+import com.example.travelor.bean.Canteen;
+import com.squareup.picasso.Picasso;
+
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CanttenCardAdapter extends RecyclerView.Adapter<CanttenCardAdapter.CanttenCardViewHolder> {
 
-    private final List<CanteenItem> canteenList;
+    private final List<Canteen> canteenList;
     private final Context context;
 
-    public CanttenCardAdapter(Context context, List<CanteenItem> canttenList) {
+    public CanttenCardAdapter(Context context, List<Canteen> canttenList) {
         this.context = context;
         this.canteenList = canttenList;
     }
@@ -37,45 +40,50 @@ public class CanttenCardAdapter extends RecyclerView.Adapter<CanttenCardAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CanttenCardViewHolder holder, int position) {
-        CanteenItem canteenItem = canteenList.get(position);
-        setTexts(holder, position, canteenItem);
-        setCanteenImage(holder, canteenItem);
-        addListeners(holder, canteenItem);
+        Canteen canteen = canteenList.get(position);
+        setTexts(holder, position, canteen);
+        setCanteenImage(holder, canteen);
+        addListeners(holder, canteen);
     }
 
-    private static void setTexts(@NonNull CanttenCardViewHolder holder, int position, CanteenItem canteenItem) {
+    private static void setTexts(@NonNull CanttenCardViewHolder holder, int position, Canteen canteen) {
         holder.canteenIndex.setText(String.valueOf(position + 1));
-        holder.canteenName.setText(canteenItem.getCanteenName());
-        holder.flowState.setText("流量状况: " + canteenItem.getFlowState());
+        holder.canteenName.setText(canteen.getName());
+        holder.flowState.setText("流量状况: " + canteen.getFlowState());
     }
 
-    private void addListeners(@NonNull CanttenCardViewHolder holder, CanteenItem canteenItem) {
-        addListener2CanteenCard(holder, canteenItem);
-        addListener2LocationIcon(holder, canteenItem);
+    private void addListeners(@NonNull CanttenCardViewHolder holder, Canteen canteen) {
+        addListener2CanteenCard(holder, canteen);
+        addListener2LocationIcon(holder, canteen);
     }
 
-    private void addListener2LocationIcon(@NonNull CanttenCardViewHolder holder, CanteenItem canteenItem) {
+    private void addListener2LocationIcon(@NonNull CanttenCardViewHolder holder, Canteen canteen) {
         holder.locationIcon.setOnClickListener(locationIcon -> {
             Intent intent = new Intent(context, GaodeMapActivity.class);
-            intent.putExtra("canteenItem", canteenItem);
+            intent.putExtra("canteenItem", canteen);
             context.startActivity(intent);
         });
     }
 
-    private void addListener2CanteenCard(@NonNull CanttenCardViewHolder holder, CanteenItem canteenItem) {
+    private void addListener2CanteenCard(@NonNull CanttenCardViewHolder holder, Canteen canteen) {
         holder.cardBody.setOnClickListener(canteenCard -> {
             Intent intent = new Intent(context, MonitoringActivity.class);
-            intent.putExtra("canteenItem", canteenItem);
+            intent.putExtra("canteenItem", canteen);
             context.startActivity(intent);
         });
     }
 
-    private static void setCanteenImage(@NonNull CanttenCardViewHolder holder, CanteenItem canteenItem) {
-        try {
-            holder.canteenImage.setBackground(canteenItem.getCanteenImage());
-        } catch (Resources.NotFoundException exception) {
-            Log.e("CanttenCardAdapter#onBindViewHolder", "Image resource not found");
+    private static void setCanteenImage(@NonNull CanttenCardViewHolder holder, Canteen canteen) {
+        if (canteen.getCanteenImage() != null) {
+            try {
+                holder.canteenImage.setBackground(canteen.getCanteenImage());
+            } catch (Resources.NotFoundException exception) {
+                Log.e("CanttenCardAdapter#onBindViewHolder", "Image resource not found");
+            }
+        } else if (canteen.getImageUrl() != null) {
+            Picasso.get().load(canteen.getImageUrl()).into(holder.canteenImage);
         }
+
     }
 
     @Override
