@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.travelor.R;
 import com.example.travelor.bean.Chats;
 import com.example.travelor.datebase.ChatDbOpenHelper;
-import com.example.travelor.datebase.PlansDbOpenHelper;
 
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(viewType == TYPE_AI_LAYOUT){
-            View view = mLayoutInflater.inflate(R.layout.ai_response_item, parent, false);
+            View view = mLayoutInflater.inflate(R.layout.nutrition_advise, parent, false);
             AiViewHolder aiViewHolder = new AiViewHolder(view);
             return aiViewHolder;
         }else if(viewType == TYPE_USER_LAYOUT){

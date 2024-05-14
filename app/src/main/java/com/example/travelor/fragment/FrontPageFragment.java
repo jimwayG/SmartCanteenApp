@@ -1,6 +1,9 @@
 package com.example.travelor.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,9 +15,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.travelor.LoginActivity;
+import com.example.travelor.NutritionActivity;
 import com.example.travelor.R;
 import com.example.travelor.adapter.DishCardAdapter;
 import com.example.travelor.bean.Dish;
@@ -37,6 +43,9 @@ public class FrontPageFragment extends Fragment{
     private TextView showMfmg;
     private DishDbOpenHelper mDishDbOpenHelper;
 
+    private TextView nutrition;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,9 +62,18 @@ public class FrontPageFragment extends Fragment{
         showNature = rootView.findViewById(R.id.show_nature);
         showHumanity = rootView.findViewById(R.id.show_humanity);
         showMfmg = rootView.findViewById(R.id.show_mfmg);
+        nutrition = rootView.findViewById(R.id.nutrition);
 
         search();
         categoryAct();
+
+        nutrition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NutritionActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }

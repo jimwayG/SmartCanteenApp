@@ -107,6 +107,20 @@
                 android:textSize="14dp"
                 android:text="米粉面馆"/>
 
+            <TextView
+                android:id="@+id/nutrition"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginTop="150dp"
+                android:background="@drawable/collect_card"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="营养建议"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
