@@ -3,7 +3,6 @@ package com.example.travelor.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +48,7 @@ public class CanttenCardAdapter extends RecyclerView.Adapter<CanttenCardAdapter.
     private static void setTexts(@NonNull CanttenCardViewHolder holder, int position, Canteen canteen) {
         holder.canteenIndex.setText(String.valueOf(position + 1));
         holder.canteenName.setText(canteen.getName());
-        holder.flowState.setText("流量状况: " + canteen.getFlowState());
+        holder.flowState.setText("流量状况: " + canteen.getState());
     }
 
     private void addListeners(@NonNull CanttenCardViewHolder holder, Canteen canteen) {
@@ -80,7 +79,7 @@ public class CanttenCardAdapter extends RecyclerView.Adapter<CanttenCardAdapter.
             } catch (Resources.NotFoundException exception) {
                 Log.e("CanttenCardAdapter#onBindViewHolder", "Image resource not found");
             }
-        } else if (canteen.getImageUrl() != null) {
+        } else if (canteen.getImageUrl() != null && !canteen.getImageUrl().isEmpty()) {
             Picasso.get().load(canteen.getImageUrl()).into(holder.canteenImage);
         }
 

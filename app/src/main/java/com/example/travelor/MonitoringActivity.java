@@ -1,15 +1,11 @@
 package com.example.travelor;
 
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,10 +15,8 @@ import com.example.travelor.adapter.ImagePagerAdapter;
 import com.example.travelor.bean.Canteen;
 import com.example.travelor.datebase.CanteenDbOpenHelper;
 import com.example.travelor.fragment.AnnouncementEditDialogFragment;
+import com.example.travelor.service.CanteenService;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.viewpager.widget.ViewPager;
@@ -31,6 +25,12 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MonitoringActivity extends AppCompatActivity implements AnnouncementEditDialogFragment.AnnouncementEditDialogListener {
@@ -41,7 +41,6 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
     private TextView announcement;
     private TextView currentState;
     private ViewPager viewPager;
-    private Button announcementEditButton;
     private View locationIcon;
     private List<Integer> imageList;
     private ArrayList<View> dots = new ArrayList<>();
@@ -50,33 +49,31 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
     private int currentPosition = 1;
     private boolean isPlaying = false;
     private TextView backButton;
+    private CanteenService.GetService canteenGetService;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.monitoring_in);
+        initServices();
         initCanteenItem();
         initCanteenNameView();
         initSwichImage();
         initBackButton();
-        initFlowState();
-        initCurrentState();
-        initAnnouncement();
         initLocationIcon();
         initVideoPlayer();
-        initAnnouncementEditButton();
     }
 
-    private void initAnnouncementEditButton() {
-        announcementEditButton = findViewById(R.id.announcement_edit_button);
-        announcementEditButton.setOnClickListener(button -> {
-            AnnouncementEditDialogFragment announcementEditDialogFragment = new AnnouncementEditDialogFragment();
-            announcementEditDialogFragment.show(getSupportFragmentManager(), "announcement_edit_dialog");
-        });
+    private void initServices() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(CanteenService.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        canteenGetService = retrofit.create(CanteenService.GetService.class);
     }
 
     private void initCurrentState() {
         currentState = findViewById(R.id.current_state);
-        currentState.setText(canteen.getFlowState());
+        currentState.setText(canteen.getState());
     }
 
     private void initLocationIcon() {
@@ -99,18 +96,27 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
 
     private void initFlowState() {
         flowState = findViewById(R.id.flow_state);
-        flowState.setText("流量状况: " + canteen.getFlowState());
+        flowState.setText("流量状况: " + canteen.getState());
     }
 
     private void initCanteenItem() {
         canteen = (Canteen) getIntent().getSerializableExtra("canteenItem");
-        readCanteenFromDb();
+        readCanteenFromRemote();
     }
 
-    private void readCanteenFromDb() {
-        CanteenDbOpenHelper.readAll(this).forEach(item -> {
-            if (item.getName().equals(canteen.getName())) {
-                canteen = item;
+    private void readCanteenFromRemote() {
+        canteenGetService.getCanteen(canteen.getName()).enqueue(new Callback<Canteen>() {
+            @Override
+            public void onResponse(Call<Canteen> call, Response<Canteen> response) {
+                canteen = response.body();
+                initFlowState();
+                initCurrentState();
+                initAnnouncement();
+            }
+
+            @Override
+            public void onFailure(Call<Canteen> call, Throwable throwable) {
+                Log.e("MonitoringActivity", throwable.toString());
             }
         });
     }

@@ -353,30 +353,14 @@
         />
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/collect_card"
-            android:gravity="center_horizontal"
-            android:text="食堂公告"
-            android:textSize="20dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/announcement_edit_button"
-            android:text="修改"
-            android:layout_gravity="center"
-            ></Button>
-
-    </LinearLayout>
+        android:layout_height="51dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/collect_card"
+        android:gravity="center_horizontal"
+        android:text="食堂公告"
+        android:textSize="20dp" />
 
 
 
