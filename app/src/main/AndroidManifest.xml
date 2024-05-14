@@ -73,6 +73,10 @@
         <activity
             android:name=".NutritionActivity"
             android:exported="true" />
+        <activity
+            android:name=".DiscountsActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

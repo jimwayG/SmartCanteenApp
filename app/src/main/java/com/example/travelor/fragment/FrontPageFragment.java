@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.travelor.DiscountsActivity;
 import com.example.travelor.LoginActivity;
 import com.example.travelor.NutritionActivity;
 import com.example.travelor.R;
@@ -44,6 +45,7 @@ public class FrontPageFragment extends Fragment{
     private DishDbOpenHelper mDishDbOpenHelper;
 
     private TextView nutrition;
+    private TextView discounts;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -63,6 +65,7 @@ public class FrontPageFragment extends Fragment{
         showHumanity = rootView.findViewById(R.id.show_humanity);
         showMfmg = rootView.findViewById(R.id.show_mfmg);
         nutrition = rootView.findViewById(R.id.nutrition);
+        discounts = rootView.findViewById(R.id.discounts);
 
         search();
         categoryAct();
@@ -71,6 +74,14 @@ public class FrontPageFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), NutritionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        discounts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DiscountsActivity.class);
                 startActivity(intent);
             }
         });

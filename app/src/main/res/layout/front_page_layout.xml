@@ -118,6 +118,20 @@
                 android:text="营养建议"
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="14dp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/discounts"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/collect_card"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="优惠信息"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
 
