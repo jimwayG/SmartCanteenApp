@@ -70,6 +70,9 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
+        <activity
+            android:name=".NutritionActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
