@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp">
+            android:layout_marginLeft="35dp">
             <TextView
                 android:layout_width="25dp"
                 android:layout_height="20dp"
@@ -138,7 +138,7 @@
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="100dp"
                 android:background="@drawable/ic_vip"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -180,9 +180,9 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="200dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_go"/>
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/ic_go" />
         </LinearLayout>
 
         <!-- 食堂收藏 -->
@@ -211,8 +211,8 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="200dp"
-                android:background="@drawable/ic_go"/>
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/ic_go" />
 
         </LinearLayout>
 
@@ -240,7 +240,7 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="237dp"
+                android:layout_marginLeft="265dp"
                 android:background="@drawable/ic_go"/>
         </LinearLayout>
 
@@ -263,13 +263,13 @@
                 android:textSize="18dp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="  优惠劵"/>
+                android:text="  客服中心"/>
 
             <TextView
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="219dp"
-                android:background="@drawable/ic_go"/>
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/ic_go" />
 
         </LinearLayout>
 
@@ -297,7 +297,7 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="230dp"
                 android:background="@drawable/ic_go"/>
 
         </LinearLayout>
@@ -326,7 +326,7 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="237dp"
+                android:layout_marginLeft="265dp"
                 android:background="@drawable/ic_go"/>
 
         </LinearLayout>

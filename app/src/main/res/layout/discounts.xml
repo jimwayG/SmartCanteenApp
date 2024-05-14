@@ -103,9 +103,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="荷园二餐厅二层"
-                    android:textColor="@color/main_style_green"/>
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20dp"
+                    android:text="现价：19.9元"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"/>
             </LinearLayout>
 
             <LinearLayout
@@ -163,9 +165,11 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="荷园一餐厅一层"
-                    android:textColor="@color/main_style_green"/>
+                    android:layout_marginLeft="80dp"
+                    android:textSize="20dp"
+                    android:text="现价：8.8元"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"/>
             </LinearLayout>
 
             <LinearLayout

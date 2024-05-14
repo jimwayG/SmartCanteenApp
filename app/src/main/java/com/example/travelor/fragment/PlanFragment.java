@@ -33,7 +33,7 @@ public class PlanFragment extends Fragment {
     private PlanAdapter mPlanAdapter;
     private FloatingActionButton addButton;
     private PlansDbOpenHelper mPlansDbOpenHelper;
-    private TextView mDate;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +41,7 @@ public class PlanFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.plan_layout, container, false);
 
         addButton = rootView.findViewById(R.id.btn_add);
-        mDate = rootView.findViewById(R.id.date);
+
 
         initView(rootView);
         initData();
@@ -75,7 +75,7 @@ public class PlanFragment extends Fragment {
     private void initEvent() {
         mPlanAdapter = new PlanAdapter(requireContext(), mPlans);
         mRecyclerView.setAdapter(mPlanAdapter);
-        mDate.setText(getCurrentTimeFormat());
+
     }
 
     private String getCurrentTimeFormat() {

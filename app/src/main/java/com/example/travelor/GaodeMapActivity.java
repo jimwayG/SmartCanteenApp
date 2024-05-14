@@ -1,7 +1,11 @@
 package com.example.travelor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
@@ -58,11 +62,30 @@ public class GaodeMapActivity extends Activity {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         backButton.setBackgroundColor(Color.parseColor("#A06565")); // Setting background color programmatically
         backButton.setGravity(Gravity.CENTER); // Centering the text
-        backButton.setText("返回");
+        backButton.setText("返回/跳转高德地图");
         backButton.setTextSize(30); // Setting text size in dp
         backButton.setTextColor(Color.WHITE);
         backButton.setOnClickListener(button -> {
-            finish(); // Finish the activity
+            // 提供一个对话框让用户选择返回还是打开地图
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which){
+                        case DialogInterface.BUTTON_POSITIVE:
+                            // 用户选择打开地图
+                            jumpToGaoDeMapApp(CANTEEN_LOCATION_MAP.get(canteen.getName()));
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            // 用户选择返回
+                            finish();
+                            break;
+                    }
+                }
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("是否打开高德地图查看位置？").setPositiveButton("打开地图", dialogClickListener)
+                    .setNegativeButton("返回", dialogClickListener).show();
         });
         containerLayout.addView(backButton);
     }
@@ -95,6 +118,15 @@ public class GaodeMapActivity extends Activity {
         AMapOptions aOptions = new AMapOptions();
         aOptions.camera(new CameraPosition(CANTEEN_LOCATION_MAP.get(canteen.getName()), 19f, 0, 0));
         return aOptions;
+    }
+
+    private void jumpToGaoDeMapApp(LatLng location) {
+        String longitude = String.valueOf(location.longitude);
+        String latitude = String.valueOf(location.latitude);
+        String uri = "androidamap://viewMap?sourceApplication=智慧食堂&lat=" + latitude + "&lon=" + longitude + "&dev=0";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        intent.setPackage("com.autonavi.minimap");
+        startActivity(intent);
     }
 
     private void initMapFromMapView() {

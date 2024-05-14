@@ -58,7 +58,7 @@
                 android:layout_gravity="center"
                 android:textColor="#48A57A"
                 android:textSize="14dp"
-                android:text="动态"/>
+                android:text="社区"/>
 
         </LinearLayout>
 
