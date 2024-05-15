@@ -1,5 +1,8 @@
 package com.example.travelor.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
@@ -8,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.travelor.DishCollectActivity;
@@ -22,6 +27,7 @@ public class MineFragment extends Fragment {
     private Button btnLogout;
     private ViewGroup vgCollect;
     private ViewGroup canteen_collect;
+    private TextView vipView;
     private Button btnLogin;
     private boolean isLoggedIn = false;
 
@@ -35,6 +41,7 @@ public class MineFragment extends Fragment {
         btnLogout = rootView.findViewById(R.id.logout);
         vgCollect = rootView.findViewById(R.id.mine_collect);
         canteen_collect = rootView.findViewById(R.id.canteen_collect);
+        initVipView(rootView);
 
         // 从 SharedPreferences 中恢复登录状态
         updateButtonVisibility();
@@ -93,6 +100,14 @@ public class MineFragment extends Fragment {
         return rootView;
     }
 
+    private void initVipView(View rootView) {
+        vipView = rootView.findViewById(R.id.vip_text_view);
+        vipView.setOnClickListener(view -> {
+            VipDialogFragment vipDialogFragment = new VipDialogFragment();
+            vipDialogFragment.show(getParentFragmentManager(), "vip");
+        });
+    }
+
     // 根据登录状态设置按钮可见性
     private void updateButtonVisibility() {
         // 获取 SharedPreferences
@@ -114,6 +129,28 @@ public class MineFragment extends Fragment {
             canteen_collect.setVisibility(View.GONE);
         }
 
+    }
+
+    public static class VipDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction.
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            // Get the layout inflater.
+            LayoutInflater inflater = requireActivity().getLayoutInflater();
+
+            builder.setView(inflater.inflate(R.layout.dialog_vip_pay, null))
+                    .setTitle("成为会员")
+                    .setPositiveButton("支付", (dialog, id) -> {
+                        // START THE GAME!
+                    })
+                    .setNegativeButton("取消", (dialog, id) -> {
+                        // User cancels the dialog.
+                    });
+            // Create the AlertDialog object and return it.
+            return builder.create();
+        }
     }
 
 }
