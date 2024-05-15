@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_mine_bg"
+    android:orientation="vertical"
     tools:context=".fragment.MineFragment">
 
     <LinearLayout
@@ -30,9 +31,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
-        android:layout_marginTop="56dp"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -98,7 +99,7 @@
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="35dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circle_border_shape"
                         android:gravity="center"
@@ -153,212 +154,281 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
         android:orientation="vertical">
 
         <!-- 菜品收藏 -->
+
         <LinearLayout
             android:id="@+id/mine_collect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_collect"/>
+            android:background="@color/white"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="  菜品收藏"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="230dp"
-                android:background="@drawable/ic_go" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_collect" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="30dp"
+                    android:gravity="center"
+                    android:text="菜品收藏"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_go" />
+
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- 食堂收藏 -->
         <LinearLayout
             android:id="@+id/canteen_collect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_hotel"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:text="  食堂收藏"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_hotel" />
 
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="230dp"
-                android:background="@drawable/ic_go" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="食堂收藏"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_go" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_marginTop="10dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_message"/>
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="  通知"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="265dp"
-                android:background="@drawable/ic_go"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_message" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="通知"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_go" />
+
+            </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_coupon"/>
+            android:background="@color/white"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="  客服中心"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="25dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="230dp"
-                android:background="@drawable/ic_go" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_coupon" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="客服中心"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_go" />
+
+            </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_history"/>
+            android:background="@color/white"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="  浏览历史"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="230dp"
-                android:background="@drawable/ic_go"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_history" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="浏览历史"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_go" />
+
+            </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_share"/>
+            android:background="@color/white"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="  分享"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="265dp"
-                android:background="@drawable/ic_go"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_share" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="分享"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_go" />
+
+            </LinearLayout>
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:background="@color/white">-->
-<!--            <TextView-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:background="@drawable/ic_logout2"/>-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:textSize="20dp"-->
-<!--                android:background="@color/white"-->
-<!--                android:gravity="center"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="#8064222D"-->
-<!--                android:layout_marginLeft="150dp"-->
-<!--                android:text="退出登录"/>-->
-
-<!--        </LinearLayout>-->
 
 
-        <!--        </LinearLayout>-->
         <!-- 登录按钮部分 -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -394,7 +464,6 @@
                 android:visibility="gone"/>
         </LinearLayout>
 
-
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
