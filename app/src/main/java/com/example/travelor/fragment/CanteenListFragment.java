@@ -3,6 +3,7 @@ package com.example.travelor.fragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,9 +32,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CanteenListFragment extends Fragment {
 
+    private static final int UPDATE_DELAY_MILLI = 3000; // 1000 milliseconds == 1 second
+
     private CanteenService.GetService canteenGetService;
     private CanteenService.GetAllService canteenGetAllService;
     private CanttenCardAdapter canttenCardAdapter;
+    private List<Canteen> canteenList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +45,18 @@ public class CanteenListFragment extends Fragment {
         initDateView(rootView);
         initServices(); // Init service before using
         initCanteenListView(rootView);
+        cyclicallyUpdateCanteenListView();
         return rootView;
+    }
+
+    private void cyclicallyUpdateCanteenListView() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                initCanteenListViaRemote(canteenList);
+                handler.postDelayed(this, UPDATE_DELAY_MILLI);
+            }
+        }, UPDATE_DELAY_MILLI);
     }
 
     private void initServices() {
@@ -54,7 +69,7 @@ public class CanteenListFragment extends Fragment {
     }
 
     private void initCanteenListView(View rootView) {
-        List<Canteen> canteenList = new ArrayList<>();
+        canteenList = new ArrayList<>();
         initCanteenListViaRemote(canteenList);
         setViewAndAdapter(rootView, canteenList);
     }
@@ -64,6 +79,7 @@ public class CanteenListFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Canteen>> call, Response<List<Canteen>> response) {
                 Log.d("CanteenListFragment", String.format("Retrieve canteens info from remote:\n%s", response.body().toString()));
+                canteenList.clear();
                 canteenList.addAll(response.body());
                 canttenCardAdapter.notifyDataSetChanged();
             }

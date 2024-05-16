@@ -24,7 +24,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +33,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MonitoringActivity extends AppCompatActivity implements AnnouncementEditDialogFragment.AnnouncementEditDialogListener {
+
+    private static final int UPDATE_DELAY_MILLI = 3000; // 1000 milliseconds == 1 second
 
     private Canteen canteen;
     private TextView canteenName;
@@ -61,6 +62,17 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
         initBackButton();
         initLocationIcon();
         initVideoPlayer();
+        cyclicallyUpdateContentViaRemote();
+    }
+
+    private void cyclicallyUpdateContentViaRemote() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                readCanteenFromRemote();
+                handler.postDelayed(this, UPDATE_DELAY_MILLI);
+            }
+        }, UPDATE_DELAY_MILLI);
     }
 
     private void initServices() {
