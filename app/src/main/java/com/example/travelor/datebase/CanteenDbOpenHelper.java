@@ -64,7 +64,7 @@ public class CanteenDbOpenHelper extends SQLiteOpenHelper {
 
     private void fillContent4Test(SQLiteDatabase db) {
         db.execSQL("INSERT INTO canteen (name, flowState, imageUrl, announcement) VALUES " +
-                "('荷园一餐厅', '空闲', 'https://i.ibb.co/jzjTbGr/he1.jpg', '');");
+                "('荷园一餐厅', '空闲', 'https://i.ibb.co/jzjTbGr/he1.jpg', '荷园二食堂将于五月一日休息，届时将暂停营业，五月三日中午开始营业，请各位同学提前安排好就餐时间。');");
 
         db.execSQL("INSERT INTO canteen (name, flowState, imageUrl, announcement) VALUES " +
                 "('荷园二餐厅', '空闲', 'https://i.ibb.co/0fL2nrR/he2.jpg', '荷园二食堂将于五月一日休息，届时将暂停营业，请各位同学提前安排好就餐时间。');");

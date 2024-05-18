@@ -41,6 +41,11 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
     private TextView flowState;
     private TextView announcement;
     private TextView currentState;
+    private TextView state5;
+    private TextView state10;
+    private TextView state15;
+
+
     private ViewPager viewPager;
     private View locationIcon;
     private List<Integer> imageList;
@@ -85,7 +90,24 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
 
     private void initCurrentState() {
         currentState = findViewById(R.id.current_state);
+        state5 = findViewById(R.id.state5);
+        state10 = findViewById(R.id.state10);
+        state15 = findViewById(R.id.state15);
         currentState.setText(canteen.getState());
+
+        String name= canteen.getName();
+        if ("荷园一餐厅".equals(name)) {
+            state5.setText("拥堵");
+            state10.setText("拥堵");
+            state15.setText("畅通");
+
+        }
+        else {
+            state5.setText("繁忙");
+            state10.setText("繁忙");
+            state15.setText("拥堵");
+        }
+
     }
 
     private void initLocationIcon() {
@@ -182,12 +204,25 @@ public class MonitoringActivity extends AppCompatActivity implements Announcemen
         handler.postDelayed(runnable, 1500);  // 设置初始延时时间（单位：毫秒）
     }
 
+
     //视频播放
     private void initVideoPlayer(){
         videoView = findViewById(R.id.videoView);
         btnToggle = findViewById(R.id.btnToggle);
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.in1;
+        String nameFromDatabase = canteen.getName();
+
+        int videoUrl;
+
+        if ("荷园一餐厅".equals(nameFromDatabase)) {
+            videoUrl = R.raw.test3;
+        } else if ("荷园二餐厅".equals(nameFromDatabase)) {
+            videoUrl = R.raw.test2;
+        } else {
+            videoUrl = R.raw.test1;
+        }
+
+        String videoPath = "android.resource://" + getPackageName() + "/" + videoUrl;
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
         videoView.requestFocus();
