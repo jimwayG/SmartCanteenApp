@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 public interface CanteenService {
 
     // http://10.0.2.2:8081/ 用于开发环境。10.0.2.2 为模拟器运行环境地址（比如运行模拟器的电脑）
-    // http://aaapeng.tpddns.cn:8081/ 用于生产环境。aaapeng.tpddns.cn:8081 为服务器 API 地址，
+    // http://aaapeng.tpddns.cn:8081/ 用于生产环境。aaapeng.tpddns.cn:8081 为服务器 API 地址
     String BASE_URL = "http://aaapeng.tpddns.cn:8081/";
 
     interface GetService {
